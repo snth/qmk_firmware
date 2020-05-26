@@ -58,6 +58,7 @@ enum layer_names {
 #define CTL_ESC RCTL_T(KC_ESC)
 #define CTL_ENT RCTL_T(KC_ENTER)
 #define CTL_TAB RCTL_T(KC_TAB)
+#define CTL_SLSH RCTL_T(KC_SLSH)
 
 #define SFT_TAB RSFT_T(KC_TAB)
 #define SFT_SPC RSFT_T(KC_SPACE)
@@ -100,11 +101,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_COLEMAKDHM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_GRV, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q, KC_SLSH,\
+       KC_GRV, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,  KC_EQL,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       CTL_AT,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM, KC_DOT, S(KC_SCLN), CTL_EQL,\
+       CTL_AT,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM, KC_DOT, S(KC_SCLN), CTL_SLSH,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                             T_NUM, NAV_SPC, ALT_ESC,    CTL_TAB, SFT_ENT,   T_SYM \
                                       //`--------------------------'  `--------------------------'
@@ -127,11 +128,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_CAPS,  KC_GRV, KC_WH_U, KC_MS_L, KC_MS_R, KC_MS_U,                      KC_BTN2, KC_HOME,   KC_UP,  KC_END,  KC_INS, KC_BSLS,\
+      KC_CAPS,  KC_GRV, KC_WH_U, KC_MS_L, KC_MS_R, KC_MS_U,                      KC_BTN2, KC_HOME,   KC_UP,  KC_END,  KC_INS, KC_HASH,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_ESC, KC_LALT, KC_WH_D, KC_LSFT, KC_LCTL, KC_MS_D,                      KC_BTN1, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,  KC_TAB,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LGUI,  S_UTIL, KC_WH_L, KC_WH_R,RGB_RMOD, RGB_MOD,                      RGB_TOG, KC_PGUP, KC_PGDN, KC_EXLM, KC_SCLN, KC_HASH,\
+      KC_AMPR, KC_LGUI, KC_WH_L, KC_WH_R,RGB_RMOD, RGB_MOD,                      RGB_TOG, KC_PGUP, KC_PGDN, KC_EXLM, KC_SCLN, KC_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+-------+---------|
                                           _______, _______, _______,    _______, _______, _______ \
                                       //`--------------------------'  `--------------------------'
