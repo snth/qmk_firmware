@@ -129,9 +129,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_CAPS,  KC_GRV, KC_WH_U, KC_MS_L, KC_MS_R, KC_MS_U,                      KC_BTN2, KC_HOME,   KC_UP,  KC_END,  KC_INS, KC_HASH,\
+      KC_CAPS,  KC_GRV, KC_WH_U, KC_MS_L, KC_MS_R, KC_MS_U,                      KC_BTN2, KC_HOME,   KC_UP,  KC_END,  KC_DEL, KC_HASH,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_ESC, KC_LALT, KC_WH_D, KC_LSFT, KC_LCTL, KC_MS_D,                      KC_BTN1, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,  KC_TAB,\
+       KC_ESC, KC_LALT, KC_WH_D, KC_LSFT, KC_LCTL, KC_MS_D,                      KC_BTN1, KC_LEFT, KC_DOWN, KC_RGHT,  KC_INS,  KC_TAB,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_AMPR, KC_LGUI, KC_WH_L, KC_WH_R,RGB_RMOD, RGB_MOD,                      RGB_TOG, KC_PGUP, KC_PGDN, KC_EXLM, KC_SCLN, KC_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+-------+---------|
