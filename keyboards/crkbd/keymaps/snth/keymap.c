@@ -95,6 +95,7 @@ enum layer_names {
 
 #define LGUI_BSPC LGUI_T(KC_BSPC)
 #define LGUI_ESC LGUI_T(KC_ESC)
+#define LGUI_TAB LGUI_T(KC_TAB)
 #define RGUI_MINS RGUI_T(KC_MINS)
 #define RGUI_TAB RGUI_T(KC_TAB)
 
@@ -143,11 +144,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_COLEMAKDHM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_AMPR, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,  KC_EQL,\
+      KC_BSLS,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_QUOT,  KC_EQL,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
     LGUI_BSPC,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, RGUI_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     CTL_BSLS,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM, KC_DOT,  KC_COLN,CTL_SLSH,\
+     CTL_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM, KC_DOT,  KC_COLN,CTL_SLSH,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          ALT_BSPC, NAV_SPC, SYM_TAB,    NUM_ENT,  SFT_OS, ALT_DEL \
                                       //`--------------------------'  `--------------------------'
