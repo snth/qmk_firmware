@@ -4,9 +4,9 @@ extern uint8_t is_master;
 
 enum layer_names {
   _COLEMAKDHM,
-  _NAV,
   _NUM,
   _SYM,
+  _NAV,
   _UTIL
 };
 
@@ -159,11 +159,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_MS_U, KC_MS_L, KC_MS_R,  KC_ESC,  KC_ENT, KC_WH_U,                       KC_GRV, KC_HOME,   KC_UP,  KC_END, KC_BTN2, KC_HASH,\
+      KC_MS_U,  KC_GRV,LCTL(KC_W),KC_ESC,  KC_ENT, KC_HASH,                      KC_BTN1, KC_MS_L,   KC_UP, KC_MS_D, KC_MS_R, KC_BTN2,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_AT, ALT_INS,SFT_BSPC, CTL_DEL,LGUI_TAB, KC_WH_D,                      KC_INS,  KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, KC_EXLM,\
+        KC_AT, ALT_INS,SFT_BSPC, CTL_DEL,LGUI_TAB, KC_EXLM,                      KC_WH_U, KC_LEFT, KC_DOWN, KC_RGHT, KC_RGHT, KC_EXLM,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    KC_MS_D,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),KC_SPC,LCTL(KC_V),                  KC_BTN1, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_ASTR,\
+     KC_DOT,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),KC_SPC,LCTL(KC_V),                  KC_WH_D, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_ASTR,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+---------|
                                           _______, _______, _______,    _______, SFT_ESC, _______ \
                                       //`--------------------------'  `--------------------------'
