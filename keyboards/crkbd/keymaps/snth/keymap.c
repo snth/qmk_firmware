@@ -15,6 +15,7 @@ enum layer_names {
 
 // Layer toggle and switch
 #define NAV_SPC LT(_NAV, KC_SPACE)
+#define NAV_BSPC LT(_NAV, KC_BSPC)
 #define NAV_ESC LT(_NAV, KC_ESC)
 #define NAV_TAB LT(_NAV, KC_TAB)
 #define T_NAV TT(_NAV)
@@ -54,13 +55,13 @@ enum layer_names {
 
 // NUM layr Home row tap and modifier combos
 #define LALT_7 LALT_T(KC_7)
-#define LCTL_5 LCTL_T(KC_5)
-#define LSFT_3 LSFT_T(KC_3)
+#define LSFT_5 LSFT_T(KC_5)
+#define LCTL_3 LCTL_T(KC_3)
 #define LGUI_1 LGUI_T(KC_1)
 
 #define RALT_6 RALT_T(KC_6)
-#define RCTL_4 RCTL_T(KC_4)
-#define RSFT_2 RSFT_T(KC_2)
+#define RSFT_4 RSFT_T(KC_4)
+#define RCTL_2 RCTL_T(KC_2)
 #define RGUI_0 RGUI_T(KC_0)
 
 // Layer keys with functionality on tap
@@ -74,15 +75,17 @@ enum layer_names {
 #define CTL_ESC RCTL_T(KC_ESC)
 #define CTL_ENT RCTL_T(KC_ENTER)
 #define CTL_TAB RCTL_T(KC_TAB)
-#define CTL_SLSH RCTL_T(KC_SLSH)
+#define CTL_DEL RCTL_T(KC_DEL)
 #define CTL_BSPC RCTL_T(KC_BSPC)
 #define CTL_AMPR RCTL_T(KC_AMPR)
+#define CTL_SLSH RCTL_T(KC_SLSH)
 #define CTL_BSLS RCTL_T(KC_BSLS)
+#define CTL_SCLN RCTL_T(KC_SCLN)
 
 #define SFT_TAB RSFT_T(KC_TAB)
 #define SFT_ENT RSFT_T(KC_ENTER)
 #define SFT_SPC RSFT_T(KC_SPACE)
-#define SFT_BSPC RSFT_T(KC_BSPC)
+#define SFT_BSPC LSFT_T(KC_BSPC)
 #define SFT_ESC RSFT_T(KC_ESC)
 #define SFT_OS OSM(MOD_LSFT)
 
@@ -90,6 +93,7 @@ enum layer_names {
 #define ALT_ENT LALT_T(KC_ENTER)
 #define ALT_TAB LALT_T(KC_TAB)
 #define ALT_ESC LALT_T(KC_ESC)
+#define ALT_INS LALT_T(KC_INS)
 #define ALT_DEL LALT_T(KC_DEL)
 #define ALT_BSPC LALT_T(KC_BSPC)
 
@@ -144,22 +148,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_COLEMAKDHM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_BSLS,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_QUOT,  KC_EQL,\
+      KC_AMPR, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,  KC_EQL,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    LGUI_BSPC,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, RGUI_MINS,\
+      KC_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     CTL_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM, KC_DOT,  KC_COLN,CTL_SLSH,\
+     CTL_BSLS,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,CTL_SCLN,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         ALT_BSPC, NAV_SPC, SYM_TAB,    NUM_ENT,  SFT_OS, ALT_DEL \
+                                          ALT_TAB, NAV_SPC, SYM_BSPC,    NUM_ENT, SFT_OS, ALT_DEL \
                                       //`--------------------------'  `--------------------------'
   ),
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_MS_U, KC_MS_L, KC_MS_R,  KC_ESC,  S_UTIL, KC_WH_U,                       KC_GRV, KC_HOME,   KC_UP,  KC_END, KC_BTN2, KC_HASH,\
+      KC_MS_U, KC_MS_L, KC_MS_R,  KC_ESC,  KC_ENT, KC_WH_U,                       KC_GRV, KC_HOME,   KC_UP,  KC_END, KC_BTN2, KC_HASH,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_MS_D, KC_LALT, KC_LCTL, KC_LSFT,LGUI_TAB, KC_WH_D,                      KC_INS,  KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,RGUI_TAB,\
+        KC_AT, ALT_INS,SFT_BSPC, CTL_DEL,LGUI_TAB, KC_WH_D,                      KC_INS,  KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, KC_EXLM,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_AT,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),KC_ENT,LCTL(KC_V),                   KC_BTN1, KC_PGUP,KC_PGDN,LCTL(KC_W),KC_SCLN, KC_EXLM,\
+    KC_MS_D,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),KC_SPC,LCTL(KC_V),                  KC_BTN1, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_ASTR,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+---------|
                                           _______, _______, _______,    _______, SFT_ESC, _______ \
                                       //`--------------------------'  `--------------------------'
@@ -168,22 +172,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_F11,   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,                        KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6,  KC_F12,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_DOT,  LALT_7,  LCTL_5,  LSFT_3,  LGUI_1,    KC_9,                         KC_8,  RGUI_0,  RSFT_2,  RCTL_4,  RALT_6, KC_MINS,\
+      _______,  LALT_7,  LSFT_5,  LCTL_3,  LGUI_1,    KC_9,                         KC_8,  RGUI_0,  RCTL_2,  RSFT_4,  RALT_6, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_AT , KC_PERC, KC_LCBR, KC_LPRN, KC_LBRC, KC_CIRC,                       KC_DLR, KC_RBRC, KC_RPRN, KC_RCBR, KC_ASTR, KC_SLSH, \
+       KC_DOT, KC_PERC, KC_LCBR, KC_LPRN, KC_LBRC, KC_CIRC,                       KC_DLR, KC_RBRC, KC_RPRN, KC_RCBR, KC_SLSH, KC_ASTR, \
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, SFT_SPC, CTL_TAB,    _______, _______,   T_NUM \
+                                          _______, _______, _______,    _______, SFT_SPC,   T_NUM \
                                       //`--------------------------'  `--------------------------'
   ), 
   [_SYM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_QUOT, KC_PIPE, KC_LCBR, KC_RCBR, KC_HASH,                      KC_TILD,    KC_7,    KC_8,    KC_9, KC_PLUS, _______,\
+      _______, KC_QUOT, KC_PIPE, KC_LCBR, KC_RCBR, KC_HASH,                       KC_GRV,    KC_7,    KC_8,    KC_9, KC_PLUS, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     LGUI_ESC,   KC_LT,   KC_GT, KC_LPRN, KC_RPRN, KC_EXLM,                      KC_COLN,    KC_4,    KC_5,    KC_6,  KC_DOT, _______,\
+      _______,   KC_LT,   KC_GT, KC_LPRN, KC_RPRN, KC_EXLM,                      KC_BSLS,    KC_4,    KC_5,    KC_6,  KC_DOT, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_AT , KC_PERC, KC_COMM, KC_LBRC, KC_RBRC, KC_CIRC,                       KC_DLR,    KC_1,    KC_2,    KC_3, KC_ASTR, KC_SLSH,\
+       S_UTIL, KC_PERC, KC_COMM, KC_LBRC, KC_RBRC, KC_CIRC,                       KC_DLR,    KC_1,    KC_2,    KC_3, KC_SLSH, KC_ASTR,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                            T_SYM, _______, _______,    CTL_ENT,    KC_0, _______ \
+                                            T_SYM, _______, _______,    CTL_ENT,    KC_0,   T_SYM \
                                       //`--------------------------'  `--------------------------'
   ),
 
