@@ -13,8 +13,7 @@ enum layer_names {
 
 enum custom_keycodes {
     CK_COLN = SAFE_RANGE,
-//     MT_LCBR = KC_F21,
-//     MT_RCBR = KC_F22
+    CK_AMPR
 };
 
 // Base layers
@@ -62,13 +61,13 @@ enum custom_keycodes {
 
 // NUM layer Home row tap and modifier combos
 #define LALT_7 LALT_T(KC_7)
-#define LSFT_5 LSFT_T(KC_5)
-#define LCTL_3 LCTL_T(KC_3)
+#define LCTL_5 LCTL_T(KC_5)
+#define LSFT_3 LSFT_T(KC_3)
 #define LGUI_1 LGUI_T(KC_1)
 
 #define RALT_6 RALT_T(KC_6)
-#define RSFT_4 RSFT_T(KC_4)
-#define RCTL_2 RCTL_T(KC_2)
+#define RCTL_4 RCTL_T(KC_4)
+#define RSFT_2 RSFT_T(KC_2)
 #define RGUI_0 RGUI_T(KC_0)
 
 // SYM layer Home row tap and modifier combos
@@ -110,7 +109,7 @@ enum custom_keycodes {
 #define CTL_TAB RCTL_T(KC_TAB)
 #define CTL_DEL RCTL_T(KC_DEL)
 #define CTL_BSPC RCTL_T(KC_BSPC)
-#define CTL_AMPR RCTL_T(KC_AMPR)
+#define CTL_AMPR RCTL_T(CK_AMPR)
 #define CTL_SLSH RCTL_T(KC_SLSH)
 #define CTL_BSLS RCTL_T(KC_BSLS)
 #define CTL_SCLN RCTL_T(KC_SCLN)
@@ -181,22 +180,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_COLEMAKDHM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_AMPR, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,  KC_EQL,\
+       KC_GRV, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,  KC_EQL,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CK_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     CTL_BSLS,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,CTL_SCLN,\
+     CTL_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,CTL_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           ALT_DEL, NAV_SPC, SYM_TAB,   NUM_ENT, SFT_BSPC, ALT_DEL \
                                       //`--------------------------'  `--------------------------'
   ),
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_CIRC, KC_GRV,LCTL(KC_W), KC_ESC,  KC_DLR, KC_HASH,                       KC_GRV, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_WH_U,\
+       KC_DOT, KC_CIRC,LCTL(KC_W), KC_ESC,  KC_DLR, KC_HASH,                       KC_GRV, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_WH_U,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_AT, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL, KC_EXLM,                      KC_BTN2, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_WH_D,\
+        KC_AT, ALT_INS, CTL_DEL,SFT_BSPC,LGUI_TAB, KC_EXLM,                      KC_BTN2, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_WH_D,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_DOT,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),KC_ENT,LCTL(KC_V),                  KC_BTN1, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_ASTR,\
+     KC_AMPR,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),KC_ENT,LCTL(KC_V),                  KC_BTN1, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_ASTR,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+---------|
                                           _______, _______, _______,    _______, SFT_ESC, _______ \
                                       //`--------------------------'  `--------------------------'
@@ -205,7 +204,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_F11,   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,                        KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6,  KC_F12,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,  LALT_7,  LSFT_5,  LCTL_3,  LGUI_1,    KC_9,                         KC_8,  RGUI_0,  RCTL_2,  RSFT_4,  RALT_6, KC_MINS,\
+      _______,  LALT_7,  LCTL_5,  LSFT_3,  LGUI_1,    KC_9,                         KC_8,  RGUI_0,  RSFT_2,  RCTL_4,  RALT_6, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_DOT, KC_PERC, KC_LCBR, KC_LPRN, KC_LBRC, KC_CIRC,                       KC_DLR, KC_RBRC, KC_RPRN, KC_RCBR, KC_SLSH, KC_ASTR, \
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -251,19 +250,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // static uint16_t mt_mod_timer;
     const uint8_t shift_mods = MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT);
     const uint8_t real_mods = get_mods();
+    uint16_t keycode_to_register = keycode;
 
     switch (keycode) {
         case CK_COLN:
-            if(record->event.pressed) {
-                if (real_mods & shift_mods) { // act as a semi-colon when shift is pressed
-                    del_mods(real_mods & shift_mods);
-                    SEND_STRING(";");
-                    add_mods(real_mods & shift_mods);
-                } else {
-                    SEND_STRING(":");
-                }
+            if (real_mods & shift_mods) { // act as a semi-colon when shift is pressed
+                keycode_to_register = KC_SCLN;
+            } else {
+                keycode_to_register = KC_COLN;
             }
+            del_mods(real_mods & shift_mods);
+            if (record->event.pressed) {
+                register_code16(keycode_to_register);
+            } else {
+                unregister_code16(keycode_to_register);
+            }
+            add_mods(real_mods & shift_mods);
             return false; //we handled this keypress
+            break;
+        case CTL_AMPR:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_AMPR);
+                } else {
+                    unregister_code16(KC_AMPR);
+                }
+                return false; //we handled this keypress
+            }
+            break;
     }
     return true; // We didn't handle other keypresses
 }
