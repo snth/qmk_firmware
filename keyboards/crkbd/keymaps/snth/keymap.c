@@ -11,6 +11,12 @@ enum layer_names {
   _UTIL
 };
 
+enum custom_keycodes {
+    CK_COLN = SAFE_RANGE,
+//     MT_LCBR = KC_F21,
+//     MT_RCBR = KC_F22
+};
+
 // Base layers
 #define COLEMAK DF(_COLEMAKDHM)
 
@@ -66,17 +72,17 @@ enum layer_names {
 #define RGUI_0 RGUI_T(KC_0)
 
 // SYM layer Home row tap and modifier combos
-#define LALT_LT LALT_T(KC_LT)
-#define LSFT_GT LSFT_T(KC_GT)
-#define LCTL_LPRN LCTL_T(KC_LPRN)
-#define LGUI_RPRN LGUI_T(KC_RPRN)
-
-#define RALT_LCBR KC_LCBR
-#define RSFT_RCBR KC_RCBR
-#define RCTL_LBRC RCTL_T(KC_LBRC)
-#define RGUI_RBRC RGUI_T(KC_RBRC)
-
-#define LSFT_0 LSFT_T(KC_0)
+// #define LALT_LT LALT_T(KC_LT)
+// #define LSFT_GT LSFT_T(KC_GT)
+// #define LCTL_LPRN LCTL_T(KC_LPRN)
+// #define LGUI_RPRN LGUI_T(KC_RPRN)
+// 
+// #define RALT_LCBR RALT_T(MT_LCBR)
+// #define RSFT_RCBR RSFT_T(MT_RCBR)
+// #define RCTL_LBRC RCTL_T(KC_LBRC)
+// #define RGUI_RBRC RGUI_T(KC_RBRC)
+// 
+// #define LSFT_0 LSFT_T(KC_0)
 
 // PAD layer Home row tap and modifier combos
 // #define LALT_LT LALT_T(KC_LT)
@@ -89,7 +95,7 @@ enum layer_names {
  #define RCTL_5 RCTL_T(KC_5)
  #define RGUI_4 RGUI_T(KC_4)
 
-// #define LSFT_0 LSFT_T(KC_0)
+#define LSFT_0 LSFT_T(KC_0)
 
 // Layer keys with functionality on tap
 #define NAV_0 LT(_NAV, KC_0)
@@ -177,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_AMPR, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,  KC_EQL,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
+      CK_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      CTL_BSLS,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,CTL_SCLN,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -240,6 +246,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   )
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // static uint16_t mt_mod_timer;
+    const uint8_t shift_mods = MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT);
+    const uint8_t real_mods = get_mods();
+
+    switch (keycode) {
+        case CK_COLN:
+            if(record->event.pressed) {
+                if (real_mods & shift_mods) { // act as a semi-colon when shift is pressed
+                    del_mods(real_mods & shift_mods);
+                    SEND_STRING(";");
+                    add_mods(real_mods & shift_mods);
+                } else {
+                    SEND_STRING(":");
+                }
+            }
+            return false; //we handled this keypress
+    }
+    return true; // We didn't handle other keypresses
+}
 
 // layer_state_t layer_state_set_user(layer_state_t state) {
 //   switch (get_highest_layer(default_layer_state)) {
