@@ -182,20 +182,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_GRV, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,  KC_EQL,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CK_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
+      KC_MINS,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, CK_COLN,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      CTL_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,CTL_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          ALT_DEL, NAV_SPC, SYM_TAB,    NUM_ENT,  SFT_OS, ALT_BSPC \
+                                          ALT_DEL, NAV_SPC, SYM_TAB,    NUM_ENT, SFT_SPC, ALT_BSPC \
                                       //`--------------------------'  `--------------------------'
   ),
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_DOT, KC_CIRC,LCTL(KC_W),KC_ESC,  KC_DLR, KC_HASH,                       KC_GRV, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_WH_U,\
+      KC_TILD,  KC_DQT,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_WH_U, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_PLUS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_AT, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL, KC_EXLM,                      KC_BTN2, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_WH_D,\
+       KC_ESC, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL, KC_EXLM,                      KC_WH_D, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_SCLN,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_AMPR,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),KC_ENT,LCTL(KC_V),                  KC_BTN1, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_ASTR,\
+    KC_DOT,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),KC_ENT,LCTL(KC_V),                   KC_BTN1, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_BTN2,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+---------|
                                           _______, _______, _______,    _______, SFT_ESC, _______ \
                                       //`--------------------------'  `--------------------------'
@@ -204,22 +204,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_F11,   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,                        KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6,  KC_F12,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,  LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,    KC_9,                         KC_8,  RCTL_0,  RSFT_2,  RGUI_4,  RALT_6, KC_MINS,\
+      _______,  LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,    KC_9,                         KC_8,  RCTL_0,  RSFT_2,  RGUI_4,  RALT_6, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_AMPR, KC_PERC, KC_PIPE,   KC_LT,   KC_GT,  KC_CIRC,                       KC_DLR, KC_UNDS, _______, _______, KC_SLSH, KC_ASTR, \
+      KC_AMPR,   KC_LT,   KC_GT, KC_LPRN, KC_RPRN, KC_EXLM,                      KC_TILD, KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR, KC_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                            T_NUM, _______, _______,    _______, SFT_SPC, _______ \
+                                            T_NUM, SFT_SPC, _______,    _______, SFT_SPC, _______ \
                                       //`--------------------------'  `--------------------------'
   ), 
   [_SYM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       S_UTIL, _______,   KC_AT, KC_LCBR, KC_RCBR, KC_HASH,                       KC_GRV, KC_AMPR, KC_ASTR,  KC_ESC, KC_PLUS, _______,\
+       KC_GRV,  KC_DQT,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR,  KC_ESC, KC_MINS,  KC_EQL,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,   KC_LT,   KC_GT, KC_LPRN, KC_RPRN, KC_EXLM,                      KC_BSLS, KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR, _______,\
+      KC_UNDS,   KC_LT,   KC_GT, KC_LPRN, KC_RPRN, KC_EXLM,                      KC_TILD, KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR, KC_SCLN,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_AMPR, KC_PERC, KC_PIPE, KC_LBRC, KC_RBRC, KC_CIRC,                       KC_DLR, KC_UNDS, _______, _______, KC_SLSH, KC_ASTR,\
+      KC_AMPR,    KC_7,    KC_5,    KC_3,    KC_1,    KC_9,                         KC_8,    KC_0,    KC_2,    KC_4,    KC_6, KC_PIPE,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______, _______,    _______, SFT_SPC, _______ \
+                                          _______,  S_UTIL, _______,    _______, SFT_SPC, _______ \
                                       //`--------------------------'  `--------------------------'
   ),
   [_PAD] = LAYOUT( \
