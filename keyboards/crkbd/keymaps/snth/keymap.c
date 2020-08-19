@@ -104,6 +104,7 @@ enum custom_keycodes {
 #define CTL_RBR RCTL_T(KC_RBRACKET)
 #define CTL_AT  LCTL_T(S(KC_AT))
 #define CTL_EQL RCTL_T(KC_EQL)
+#define CTL_GRV RCTL_T(KC_GRV)
 #define CTL_ESC RCTL_T(KC_ESC)
 #define CTL_ENT RCTL_T(KC_ENTER)
 #define CTL_TAB RCTL_T(KC_TAB)
@@ -113,6 +114,7 @@ enum custom_keycodes {
 #define CTL_SLSH RCTL_T(KC_SLSH)
 #define CTL_BSLS RCTL_T(KC_BSLS)
 #define CTL_SCLN RCTL_T(KC_SCLN)
+#define CTL_COLN RCTL_T(CK_COLN)	// doesn't work
 #define CTL_QUOT RCTL_T(KC_QUOT)
 
 #define SFT_TAB RSFT_T(KC_TAB)
@@ -181,44 +183,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_COLEMAKDHM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,  KC_EQL,\
+       KC_GRV, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q, KC_BSPC,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CK_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     CTL_BSPC,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,CTL_BSLS,\
+     CTL_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,CTL_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          ALT_ENT, NAV_SPC, SYM_TAB,    NUM_ENT, KC_RSFT, ALT_BSPC \
+                                          ALT_TAB, NAV_SPC, SYM_ESC,    NUM_ENT, KC_RSFT, ALT_ESC \
                                       //`--------------------------'  `--------------------------'
   ),
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_DOT, KC_GRV,LCTL(KC_W),KC_HASH, KC_EXLM,  KC_DLR,                      KC_WH_U, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, _______,\
+    KC_DOT,LCTL(KC_B),LCTL(KC_W),LCTL(KC_F),LCTL(KC_T),KC_WH_U,                  KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_BTN2,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_ESC, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL,   KC_AT,                      KC_WH_D, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, _______,\
+       KC_ESC, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL, KC_WH_D,                       KC_EQL, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
- CTL_AMPR,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),                KC_BTN1, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_BTN2,\
+   KC_AMPR,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),            LCTL(KC_K), KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_PIPE,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+---------|
-                                          _______, _______, _______,    _______, SFT_ESC, _______ \
+                                          _______, _______, _______,    _______, SFT_SPC, KC_BTN1 \
                                       //`--------------------------'  `--------------------------'
   ), 
   [_NUM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_F11,   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,                        KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6,  KC_F12,\
+      _______,   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,                        KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CK_COLN,  LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,    KC_9,                         KC_8,  RCTL_0,  RSFT_2,  RGUI_4,  RALT_6, _______,\
+      _______,  LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,    KC_9,                         KC_8,  RCTL_0,  RSFT_2,  RGUI_4,  RALT_6, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_AMPR, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN,   KC_AT,                      KC_TILD,  KC_EQL, _______, _______, _______, KC_BSLS,\
+      _______, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_PLUS,                       KC_EQL, KC_UNDS, _______, _______, _______, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                             T_NUM, SFT_SPC, _______,    _______, SFT_SPC, _______ \
                                       //`--------------------------'  `--------------------------'
   ), 
   [_SYM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______,  KC_DQT, KC_PERC, KC_HASH, KC_EXLM,  KC_ESC,                      KC_ASTR,  KC_F10,   KC_AT,  KC_DLR, KC_CIRC, _______,\
+      _______, KC_QUOT, KC_PERC, KC_HASH, KC_EXLM,  KC_F11,                      KC_ASTR,  KC_F10,   KC_AT,  KC_DLR, KC_CIRC, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_SCLN,   KC_LT,   KC_GT, KC_LPRN, KC_RPRN,   KC_AT,                      KC_TILD, KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR, _______,\
+      _______,   KC_LT,   KC_GT, KC_LPRN, KC_RPRN, KC_PLUS,                       KC_EQL, KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_AMPR,    KC_7,    KC_5,    KC_3,    KC_1,    KC_9,                         KC_8,    KC_0,    KC_2,    KC_4,    KC_6, KC_PIPE,\
+      _______,    KC_7,    KC_5,    KC_3,    KC_1,    KC_9,                         KC_8,    KC_0,    KC_2,    KC_4,    KC_6, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______,  S_UTIL, _______,    _______, SFT_SPC, _______ \
                                       //`--------------------------'  `--------------------------'
