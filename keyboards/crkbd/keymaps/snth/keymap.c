@@ -6,6 +6,7 @@ enum layer_names {
   _COLEMAKDHM,
   _NUM,
   _SYM,
+  _NUM2,
   _PAD,
   _NAV,
   _UTIL
@@ -14,6 +15,7 @@ enum layer_names {
 enum custom_keycodes {
     CK_AMPR = KC_F21,
     CK_COLN = SAFE_RANGE,
+    CK_UNDS,
 };
 
 // Base layers
@@ -36,6 +38,8 @@ enum custom_keycodes {
 #define NUM_TAB LT(_NUM, KC_TAB)
 #define T_NUM TT(_NUM)
 #define S_NUM MO(_NUM)
+
+#define NUM2_ENT LT(_NUM2, KC_ENTER)
 
 #define SYM_SPC LT(_SYM, KC_SPACE)
 #define SYM_ENT LT(_SYM, KC_ENTER)
@@ -189,14 +193,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      CTL_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,CTL_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          ALT_TAB, NAV_SPC, SYM_ESC,    NUM_ENT, KC_RSFT, ALT_ESC \
+                                          ALT_ESC, NAV_SPC, SYM_TAB,    NUM_ENT, KC_RSFT, ALT_ESC \
                                       //`--------------------------'  `--------------------------'
   ),
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-    KC_DOT,LCTL(KC_B),LCTL(KC_W),LCTL(KC_F),LCTL(KC_T),KC_WH_U,                  KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_BTN2,\
+    KC_DOT,LCTL(KC_B),LCTL(KC_W),LCTL(KC_F),KC_EXLM,KC_WH_U,                  KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_BTN2,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_ESC, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL, KC_WH_D,                       KC_EQL, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, _______,\
+       KC_ESC, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL, KC_WH_D,                       KC_EQL, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
    KC_AMPR,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),            LCTL(KC_K), KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_PIPE,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+---------|
@@ -209,20 +213,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,  LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,    KC_9,                         KC_8,  RCTL_0,  RSFT_2,  RGUI_4,  RALT_6, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_PLUS,                       KC_EQL, KC_UNDS, _______, _______, _______, _______,\
+      _______,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),            KC_PLUS, KC_UNDS, _______, _______, _______, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                            T_NUM, SFT_SPC, _______,    _______, SFT_SPC, _______ \
+                                          _______, SFT_SPC, _______,    _______, SFT_SPC, _______ \
                                       //`--------------------------'  `--------------------------'
   ), 
   [_SYM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_QUOT, KC_PERC, KC_HASH, KC_EXLM,  KC_F11,                      KC_ASTR,  KC_F10,   KC_AT,  KC_DLR, KC_CIRC, _______,\
+      _______, KC_QUOT, KC_PERC, KC_HASH, KC_EXLM,  KC_F11,                      KC_ASTR, KC_TILD,   KC_AT,  KC_DLR, KC_CIRC, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,   KC_LT,   KC_GT, KC_LPRN, KC_RPRN, KC_PLUS,                       KC_EQL, KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR, _______,\
+      _______,   KC_LT,   KC_GT, KC_LPRN, KC_RPRN, KC_MINS,                       KC_EQL, KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,    KC_7,    KC_5,    KC_3,    KC_1,    KC_9,                         KC_8,    KC_0,    KC_2,    KC_4,    KC_6, _______,\
+      _______,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),            KC_PLUS, KC_UNDS, _______, _______, _______, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______,  S_UTIL, _______,    _______, SFT_SPC, _______ \
+                                          _______,  S_UTIL, _______,   NUM2_ENT, SFT_SPC, _______ \
+                                      //`--------------------------'  `--------------------------'
+  ), 
+  [_NUM2] = LAYOUT( \
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      _______,   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,                        KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6, _______,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______,  LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,    KC_9,                         KC_8,  RCTL_0,  RSFT_2,  RGUI_4,  RALT_6, _______,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),            KC_PLUS, KC_UNDS, _______, _______, _______, _______,\
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                          _______, SFT_SPC, _______,    _______, SFT_SPC, _______ \
                                       //`--------------------------'  `--------------------------'
   ),
   [_PAD] = LAYOUT( \
@@ -261,6 +276,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 keycode_to_register = KC_SCLN;
             } else {
                 keycode_to_register = KC_COLN;
+            }
+            del_mods(real_mods & shift_mods);
+            if (record->event.pressed) {
+                register_code16(keycode_to_register);
+            } else {
+                unregister_code16(keycode_to_register);
+            }
+            add_mods(real_mods & shift_mods);
+            return false; //we handled this keypress
+            break;
+        case CK_UNDS:
+            if (real_mods & shift_mods) { // act as a minus when shift is pressed
+                keycode_to_register = KC_MINS;
+            } else {
+                keycode_to_register = KC_UNDS;
             }
             del_mods(real_mods & shift_mods);
             if (record->event.pressed) {
