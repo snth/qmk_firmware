@@ -126,6 +126,7 @@ enum custom_keycodes {
 #define SFT_SPC RSFT_T(KC_SPACE)
 #define SFT_BSPC LSFT_T(KC_BSPC)
 #define SFT_BSLS RSFT_T(KC_BSLS)
+#define SFT_AMPR RSFT_T(KC_AMPR)
 #define SFT_ESC RSFT_T(KC_ESC)
 #define SFT_OS OSM(MOD_LSFT)
 
@@ -192,9 +193,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CK_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     CTL_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,SFT_BSLS,\
+     SFT_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,SFT_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          ALT_ENT, NAV_SPC, SYM_ESC,    NUM_ENT, KC_RSFT, CTL_TAB \
+                                          CTL_ENT, NAV_SPC, SYM_ESC,    NUM_ENT, KC_RSFT, ALT_TAB \
                                       //`--------------------------'  `--------------------------'
   ),
   [_NAV] = LAYOUT( \
