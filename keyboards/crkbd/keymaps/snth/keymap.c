@@ -193,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CK_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     SFT_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,SFT_BSLS,\
+      CK_UNDS,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,SFT_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           CTL_ENT, NAV_SPC, SYM_ESC,    NUM_ENT, KC_RSFT, ALT_TAB \
                                       //`--------------------------'  `--------------------------'
@@ -222,7 +222,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), 
   [_SYM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_QUOT, KC_PERC, KC_HASH, KC_EXLM,  KC_F11,                      KC_ASTR,  KC_GRV,   KC_AT,  KC_DLR, KC_CIRC, _______,\
+      _______, KC_AMPR, KC_PERC, KC_HASH, KC_EXLM,  KC_F11,                      KC_ASTR,  KC_GRV,   KC_AT,  KC_DLR, KC_CIRC, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,   KC_LT,   KC_GT, KC_LPRN, KC_RPRN, KC_QUOT,                       KC_EQL, KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR, KC_UNDS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
