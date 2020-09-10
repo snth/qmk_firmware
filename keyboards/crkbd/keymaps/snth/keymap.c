@@ -125,6 +125,7 @@ enum custom_keycodes {
 #define SFT_ENT RSFT_T(KC_ENTER)
 #define SFT_SPC RSFT_T(KC_SPACE)
 #define SFT_BSPC LSFT_T(KC_BSPC)
+#define SFT_BSLS RSFT_T(KC_BSLS)
 #define SFT_ESC RSFT_T(KC_ESC)
 #define SFT_OS OSM(MOD_LSFT)
 
@@ -187,18 +188,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_COLEMAKDHM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q, KC_BSPC,\
+       KC_TAB, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q, KC_BSPC,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CK_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     CTL_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,CTL_BSLS,\
+     CTL_AMPR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,SFT_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          ALT_ESC, NAV_SPC, SYM_TAB,    NUM_ENT, KC_RSFT, ALT_ESC \
+                                          ALT_ENT, NAV_SPC, SYM_ESC,    NUM_ENT, KC_RSFT, CTL_TAB \
                                       //`--------------------------'  `--------------------------'
   ),
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-   KC_GRV,LCTL(KC_B),LCTL(KC_W),LCTL(KC_F),KC_EXLM,KC_WH_U,                      KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_BTN2,\
+       KC_GRV, KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_WH_U,                      KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_BTN2,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_ESC, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL, KC_WH_D,                       KC_EQL, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_UNDS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
