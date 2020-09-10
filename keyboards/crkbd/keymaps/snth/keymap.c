@@ -193,18 +193,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CK_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CK_UNDS,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,SFT_BSLS,\
+      SFT_ESC,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,SFT_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           CTL_ENT, NAV_SPC, SYM_ESC,    NUM_ENT, KC_RSFT, ALT_TAB \
                                       //`--------------------------'  `--------------------------'
   ),
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_GRV, KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_WH_U,                      KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_BTN2,\
+       KC_GRV, KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_WH_U,                      KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_ESC, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL, KC_WH_D,                       KC_EQL, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_UNDS,\
+      KC_SCLN, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL, KC_WH_D,                       KC_EQL, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_UNDS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-   KC_AMPR,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),               KC_MINS, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_PIPE,\
+   KC_ESC,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),               KC_MINS, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_PIPE,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+---------|
                                           _______, _______, _______,    _______, SFT_SPC, KC_BTN1 \
                                       //`--------------------------'  `--------------------------'
