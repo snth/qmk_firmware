@@ -195,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       SFT_ESC,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,SFT_BSLS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          ALT_ENT, NAV_SPC, SYM_TAB,    NUM_ENT, OSM_SFT, CTL_TAB \
+                                          CTL_ENT, NAV_SPC, SYM_TAB,    NUM_ENT, OSM_SFT, ALT_TAB \
                                       //`--------------------------'  `--------------------------'
   ),
   [_NAV] = LAYOUT( \
