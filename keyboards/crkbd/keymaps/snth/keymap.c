@@ -1,268 +1,78 @@
+#pragma once
 #include QMK_KEYBOARD_H
 
+#include "snth.h"
+
+/*
+ * The `LAYOUT_crkbd_base` macro is a template to allow the use of identical
+ * modifiers for the default layouts (eg QWERTY, Colemak, Dvorak, etc), so
+ * that there is no need to set them up for each layout, and modify all of
+ * them if I want to change them.  This helps to keep consistency and ease
+ * of use. K## is a placeholder to pass through the individual keycodes
+ */
+// clang-format off
+#define LAYOUT_crkbd_base( \
+    K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, \
+    K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, \
+    K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, \
+                   K34, K35, K36, K37, K38, K39       \
+  ) \
+  LAYOUT_crkbd_wrapper( \
+    KC_TAB,  K01,   K02,   K03,    K04,     K05,                              K06,     K07,     K08,     K09,     K0A,    KC_BSPC,   \
+    CK_COLN, K11,   K12,   K13,    K14,     K15,                              K16,     K17,     K18,     K19,     K1A,    KC_MINS,   \
+    CTL_ESC, K21,   K22,   K23,    K24,     K25,                              K26,     K27,     K28,     K29,     K2A,    CTL_BSLS,  \
+                   		   K34,     K35,      K36,           K37,     K38,     K39  \
+                               CTL_ENT, NAV_SPC,  SYM_TAB,       NUM_ENT, OSM_SFT, ALT_TAB \
+    )
+
+#define LAYOUT_crkbd_base_wrapper(...)       LAYOUT_crkbd_base(__VA_ARGS__)
+
 extern uint8_t is_master;
-
-enum layer_names {
-  _COLEMAKDHM,
-  _NUM,
-  _SYM,
-  _NUM2,
-  _PAD,
-  _NAV,
-  _UTIL
-};
-
-enum custom_keycodes {
-    CK_AMPR = KC_F21,
-    CK_COLN = SAFE_RANGE,
-    CK_UNDS,
-};
-
-// Base layers
-#define COLEMAK DF(_COLEMAKDHM)
-
-// Layer toggle and switch
-#define NAV_SPC LT(_NAV, KC_SPACE)
-#define NAV_BSPC LT(_NAV, KC_BSPC)
-#define NAV_ESC LT(_NAV, KC_ESC)
-#define NAV_TAB LT(_NAV, KC_TAB)
-#define T_NAV TT(_NAV)
-#define S_NAV MO(_NAV)
-
-#define NUM_BSPC LT(_NUM, KC_BSPC)
-#define NUM_SPC LT(_NUM, KC_SPACE)
-#define NUM_ENT LT(_NUM, KC_ENTER)
-#define NUM_ESC LT(_NUM, KC_ESC)
-#define NUM_ALT LT(_NUM, KC_LALT)
-#define NUM_DEL LT(_NUM, KC_DEL)
-#define NUM_TAB LT(_NUM, KC_TAB)
-#define T_NUM TT(_NUM)
-#define S_NUM MO(_NUM)
-
-#define NUM2_ENT LT(_NUM2, KC_ENTER)
-
-#define SYM_SPC LT(_SYM, KC_SPACE)
-#define SYM_ENT LT(_SYM, KC_ENTER)
-#define SYM_TAB LT(_SYM, KC_TAB)
-#define SYM_ESC LT(_SYM, KC_ESC)
-#define SYM_BSPC LT(_SYM, KC_BSPC)
-#define SYM_DEL LT(_SYM, KC_DEL)
-#define T_SYM TT(_SYM)
-
-#define UTL_BSPC LT(_UTIL, KC_BSPC)
-#define S_UTIL MO(_UTIL)
-
-// BASE Layer Home row tap and modifier combos
-#define LALT_A LALT_T(KC_A)
-#define LGUI_R LGUI_T(KC_R)
-#define LSFT_S LSFT_T(KC_S)
-#define LCTL_Tee LCTL_T(KC_T)
-
-#define RALT_O RALT_T(KC_O)
-#define RGUI_I RGUI_T(KC_I)
-#define RSFT_E RSFT_T(KC_E)
-#define RCTL_N RCTL_T(KC_N)
-
-// NUM layer Home row tap and modifier combos
-#define LALT_7 LALT_T(KC_7)
-#define LGUI_5 LGUI_T(KC_5)
-#define LSFT_3 LSFT_T(KC_3)
-#define LCTL_1 LCTL_T(KC_1)
-
-#define RALT_6 RALT_T(KC_6)
-#define RGUI_4 RGUI_T(KC_4)
-#define RSFT_2 RSFT_T(KC_2)
-#define RCTL_0 RCTL_T(KC_0)
-
-// SYM layer Home row tap and modifier combos
-// #define LALT_LT LALT_T(KC_LT)
-// #define LSFT_GT LSFT_T(KC_GT)
-// #define LCTL_LPRN LCTL_T(KC_LPRN)
-// #define LGUI_RPRN LGUI_T(KC_RPRN)
-// 
-// #define RALT_LCBR RALT_T(MT_LCBR)
-// #define RSFT_RCBR RSFT_T(MT_RCBR)
-// #define RCTL_LBRC RCTL_T(KC_LBRC)
-// #define RGUI_RBRC RGUI_T(KC_RBRC)
-// 
-// #define LSFT_0 LSFT_T(KC_0)
-
-// PAD layer Home row tap and modifier combos
-// #define LALT_LT LALT_T(KC_LT)
-// #define LSFT_GT LSFT_T(KC_GT)
-// #define LCTL_LPRN LCTL_T(KC_LPRN)
-// #define LGUI_RPRN LGUI_T(KC_RPRN)
-
-#define RALT_DOT RALT_T(KC_DOT)
-#define RSFT_6 RSFT_T(KC_6)
- #define RCTL_5 RCTL_T(KC_5)
- #define RGUI_4 RGUI_T(KC_4)
-
-#define LSFT_0 LSFT_T(KC_0)
-
-// Layer keys with functionality on tap
-#define NAV_0 LT(_NAV, KC_0)
-
-// Tap/mod keys
-#define CTL_LBR LCTL_T(KC_LBRACKET)
-#define CTL_RBR RCTL_T(KC_RBRACKET)
-#define CTL_AT  LCTL_T(S(KC_AT))
-#define CTL_EQL RCTL_T(KC_EQL)
-#define CTL_GRV RCTL_T(KC_GRV)
-#define CTL_ESC RCTL_T(KC_ESC)
-#define CTL_ENT RCTL_T(KC_ENTER)
-#define CTL_TAB RCTL_T(KC_TAB)
-#define CTL_DEL RCTL_T(KC_DEL)
-#define CTL_BSPC RCTL_T(KC_BSPC)
-#define CTL_AMPR RCTL_T(CK_AMPR)
-#define CTL_SLSH RCTL_T(KC_SLSH)
-#define CTL_BSLS RCTL_T(KC_BSLS)
-#define CTL_SCLN RCTL_T(KC_SCLN)
-#define CTL_COLN RCTL_T(CK_COLN)	// doesn't work
-#define CTL_QUOT RCTL_T(KC_QUOT)
-
-#define SFT_TAB RSFT_T(KC_TAB)
-#define SFT_ENT RSFT_T(KC_ENTER)
-#define SFT_SPC RSFT_T(KC_SPACE)
-#define SFT_BSPC LSFT_T(KC_BSPC)
-#define SFT_BSLS RSFT_T(KC_BSLS)
-#define SFT_AMPR RSFT_T(KC_AMPR)
-#define SFT_ESC RSFT_T(KC_ESC)
-#define OSM_SFT OSM(MOD_RSFT)
-
-#define ALT_SPC LALT_T(KC_SPACE)
-#define ALT_ENT LALT_T(KC_ENTER)
-#define ALT_TAB LALT_T(KC_TAB)
-#define ALT_ESC LALT_T(KC_ESC)
-#define ALT_INS LALT_T(KC_INS)
-#define ALT_DEL LALT_T(KC_DEL)
-#define ALT_BSPC LALT_T(KC_BSPC)
-
-#define LGUI_BSPC LGUI_T(KC_BSPC)
-#define LGUI_ESC LGUI_T(KC_ESC)
-#define LGUI_TAB LGUI_T(KC_TAB)
-#define RGUI_MINS RGUI_T(KC_MINS)
-#define RGUI_TAB RGUI_T(KC_TAB)
-
-// Global tab forward and backward
-#define TBFWD LCTL(KC_TAB)
-#define TBBCK LCTL(LSFT(KC_TAB))
-
-// Custom key for NUM layer
-#define CTEQL RCTL_T(KC_EQL)
-
-// €
-#define KC_EUR ALGR(KC_5)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Nav Layer (based on Extend)
- *
- * ,------,----------------------------------.           ,----------------------------------.------.
- * |      |      | WH U | MS L | MS R | MS U |           | BTN2 | HOME |  UP  | END  | INS  |      |
- * |------|------+------+------+------+------|           |------+------+------+------+------|------|
- * |      | ALT  | WH D | SFT  | CTL  | MS D |           | BTN1 | LEFT | DOWN | RIGHT| DEL  |      |
- * |------|------+------+------+------+------|           |------+------+------+------+------|------|
- * |      |      |      |      | BTN1 | BTN2 |           | BSPC | PG UP| PG DN| ACL2?| BSPC |      |
- * `------`----------------------------------'           `----------------------------------'------'
- *                         ,--------------------.    ,--------------------.
- *                         |      |      |      |    |      |      |      |
- *                         `------+------|      |    |      |------+------'
- *                                       |      |    |      |
- *                                       `------'    `------'
- */
-/* Colemak DHm
- *
- * ,------,----------------------------------.           ,----------------------------------.------.
- * | TAB  |   '  |   W  |   F  |   P  |   B  |           |   J  |   L  |   U  |   Y  |   Q  |   /  |
- * |------|------+------+------+------+------|           |------+------+------+------+------|------|
- * | BSPC | ALT/A| GUI/R| SFT/S| CTL/T|   G  |           |   M  | CTL/N| SFT/E| GUI/I| ALT/O|   -  |
- * |------|------+------+------+------+------|           |------+------+------+------+------|------|
- * | CTL/[| SYS/Z|   X  |   C  |   D  |   V  |           |   K  |   H  |   ,  |   .  |   ;  | CTL/]|
- * `------`----------------------------------'           `----------------------------------'------'
- *                         ,--------------------.    ,--------------------.
- *                         | NAV  |SFT/SP|      |    |      |SFT/EN| NUM  |
- *                         `------+------|ALT/  |    |GUI/  |------+------'
- *                                       |  ESC |    | BSPC |
- *                                       `------'    `------'
- */
-  [_COLEMAKDHM] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB, KC_QUOT,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q, KC_BSPC,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CK_COLN,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINS,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CTL_ESC,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,CTL_BSLS,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          CTL_ENT, NAV_SPC, SYM_TAB,    NUM_ENT, OSM_SFT, ALT_TAB \
-                                      //`--------------------------'  `--------------------------'
+  [_COLEMAKDHM] = LAYOUT_crkbd_base_wrapper(
+        _______________COLEMAQ_DHM_L1______________, _______________COLEMAQ_DHM_R1______________,
+        _______________COLEMAQ_DHM_L2______________, _______________COLEMAQ_DHM_R2________________,
+        _______________COLEMAQ_DHM_L3______________, _______________COLEMAQ_DHM_R3________________
+        _______________COLEMAQ_DHM_L4______________, _______________COLEMAQ_DHM_R4________________
   ),
-  [_NAV] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_GRV, KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_WH_U,                      KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_SCLN, ALT_INS,LGUI_TAB,SFT_BSPC, CTL_DEL, KC_WH_D,                       KC_EQL, KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_UNDS,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-   KC_ESC,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),               KC_MINS, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, KC_PIPE,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+---------|
-                                          _______, _______, _______,    _______, SFT_SPC, KC_BTN1 \
-                                      //`--------------------------'  `--------------------------'
+  [_NAV] = LAYOUT_crkbd_base_wrapper( \
+        _________________SNTH_NAV_L1_______________, _________________SNTH_NAV_R1_______________,
+        _________________SNTH_NAV_L2_______________, _________________SNTH_NAV_R2_______________,
+        _________________SNTH_NAV_L3_______________, _________________SNTH_NAV_R3_______________
+        _________________SNTH_NAV_L4_______________, _________________SNTH_NAV_R4_______________
   ), 
-  [_NUM] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______,   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,                        KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,  LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,    KC_9,                         KC_8,  RCTL_0,  RSFT_2,  RGUI_4,  RALT_6, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),            KC_MINS, KC_PLUS, _______, _______, _______, _______,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, SFT_SPC, _______,    _______,  S_UTIL, _______ \
-                                      //`--------------------------'  `--------------------------'
+  [_NUM] = LAYOUT_crkbd_base_wrapper( \
+        _________________SNTH_NUM_L1_______________, _________________SNTH_NUM_R1_______________,
+        _________________SNTH_NUM_L2_______________, _________________SNTH_NUM_R2_______________,
+        _________________SNTH_NUM_L3_______________, _________________SNTH_NUM_R3_______________
+        _________________SNTH_NUM_L4_______________, _________________SNTH_NUM_R4_______________
   ), 
-  [_SYM] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_AMPR, KC_PERC, KC_HASH, KC_EXLM,  KC_F11,                      KC_ASTR,  KC_GRV,   KC_AT,  KC_DLR, KC_CIRC, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_LABK, KC_RABK, KC_LPRN, KC_RPRN, KC_QUOT,                       KC_EQL, KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR, KC_UNDS,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),            KC_MINS, KC_PLUS, _______, _______, _______, _______,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______,  S_UTIL, _______,   NUM2_ENT, SFT_SPC, _______ \
-                                      //`--------------------------'  `--------------------------'
+  [_SYM] = LAYOUT_crkbd_base_wrapper( \
+        _________________SNTH_SYM_L1_______________, _________________SNTH_SYM_R1_______________,
+        _________________SNTH_SYM_L2_______________, _________________SNTH_SYM_R2_______________,
+        _________________SNTH_SYM_L3_______________, _________________SNTH_SYM_R3_______________
+        _________________SNTH_SYM_L4_______________, _________________SNTH_SYM_R4_______________
   ), 
-  [_NUM2] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______,   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9,                        KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,  LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,    KC_9,                         KC_8,  RCTL_0,  RSFT_2,  RGUI_4,  RALT_6, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V),            KC_MINS, KC_PLUS, _______, _______, _______, _______,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, SFT_SPC, _______,    _______, SFT_SPC, _______ \
-                                      //`--------------------------'  `--------------------------'
+  [_NUM2] = LAYOUT_crkbd_base_wrapper( \
+        _________________SNTH_NUM_L1_______________, _________________SNTH_NUM_R1_______________,
+        _________________SNTH_NUM_L2_______________, _________________SNTH_NUM_R2_______________,
+        _________________SNTH_NUM_L3_______________, _________________SNTH_NUM_R3_______________
+        _________________SNTH_NUM_L4_______________, _________________SNTH_NUM_R4_______________
   ),
   [_PAD] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_QUOT, KC_PIPE, KC_LCBR, KC_RCBR, KC_HASH,                       KC_GRV,    KC_7,    KC_8,    KC_9, KC_PLUS, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,   KC_LT,  KC_GT,  KC_LPRN, KC_RPRN, KC_EXLM,                      KC_BSLS,  RGUI_4,  RCTL_5,  RSFT_6,RALT_DOT, _______,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       S_UTIL, KC_PERC, KC_COMM, KC_LBRC, KC_RBRC, KC_CIRC,                       KC_DLR,    KC_1,    KC_2,    KC_3, KC_SLSH, KC_ASTR,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______, _______,    CTL_ENT,  LSFT_0,   T_SYM \
-                                      //`--------------------------'  `--------------------------'
+        _________________SNTH_PAD_L1_______________, _________________SNTH_PAD_R1_______________,
+        _________________SNTH_PAD_L2_______________, _________________SNTH_PAD_R2_______________,
+        _________________SNTH_PAD_L3_______________, _________________SNTH_PAD_R3_______________
+        _________________SNTH_PAD_L4_______________, _________________SNTH_PAD_R4_______________
   ),
   [_UTIL] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      EEP_RST,   RESET, KC_MSTP, KC_VOLU, KC_MPLY, KC_CAPS,                      COLEMAK, XXXXXXX, XXXXXXX, XXXXXXX,   RESET, EEP_RST,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, KC_MPRV, KC_VOLD, KC_MNXT, XXXXXXX,                      XXXXXXX, RGB_MOD, RGB_SPI, RGB_HUI, RGB_SAI, RGB_VAI,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, KC_SLEP, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX,                      RGB_TOG,RGB_RMOD, RGB_SPD, RGB_HUD, RGB_SAD, RGB_VAD,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______, _______,    _______, _______, _______ \
-                                      //`--------------------------'  `--------------------------'
+        _________________SNTH_UTL_L1_______________, _________________SNTH_UTL_R1_______________,
+        _________________SNTH_UTL_L2_______________, _________________SNTH_UTL_R2_______________,
+        _________________SNTH_UTL_L3_______________, _________________SNTH_UTL_R3_______________
+        _________________SNTH_UTL_L4_______________, _________________SNTH_UTL_R4_______________
   )
 };
 
