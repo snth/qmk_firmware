@@ -185,8 +185,10 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #endif
 
 // clang-format off
+#define KEYMAP_wrapper(...)                  LAYOUT(__VA_ARGS__)
+#define LAYOUT_wrapper(...)                  LAYOUT(__VA_ARGS__)
 #define LAYOUT_gergo_wrapper(...)            LAYOUT_gergo(__VA_ARGS__)
-#define LAYOUT_crkbd_wrapper(...)            LAYOUT_gergo(__VA_ARGS__)
+#define LAYOUT_crkbd_wrapper(...)            LAYOUT_crkbd(__VA_ARGS__)
 
 /*
 Blocks for each of the four major keyboard layouts
@@ -199,70 +201,70 @@ NOTE: These are all the same length.  If you do a search/replace
   then you need to add/remove underscores to keep the
   lengths consistent.
 */
-#define ______________COLEMAQ_DHM_L1_______________       KC_QUOT, KC_W,    KC_F,    KC_P,    KC_B
-#define ______________COLEMAQ_DHM_L2_______________       KC_A,    KC_R,    KC_S,    KC_T,    KC_G
-#define ______________COLEMAQ_DHM_L3_______________       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
-#define ______________COLEMAQ_DHM_L4_______________                         CTL_ENT, NAV_SPC, SYM_TAB,       
+#define _______________COLEMAQ_DHM_L1______________       KC_QUOT, KC_W,    KC_F,    KC_P,    KC_B
+#define _______________COLEMAQ_DHM_L2______________       KC_A,    KC_R,    KC_S,    KC_T,    KC_G
+#define _______________COLEMAQ_DHM_L3______________       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
+#define _______________COLEMAQ_DHM_L4______________                         CTL_ENT, NAV_SPC, SYM_TAB
 
-#define ______________COLEMAQ_DHM_R1_______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q
-#define ______________COLEMAQ_DHM_R2_______________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
-#define ______________COLEMAQ_DHM_R3_______________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
-#define ______________COLEMAQ_DHM_R4_______________       NUM_ENT, OSM_SFT, ALT_TAB 
-
-
-#define _______________SNTH_NAV_L1_________________       KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_WH_U
-#define _______________SNTH_NAV_L2_________________       ALT_INS, LGUI_TAB,SFT_BSPC,CTL_DEL, KC_WH_D
-#define _______________SNTH_NAV_L3_________________       LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V)
-#define _______________SNTH_NAV_L4_________________                         CTL_ENT, NAV_SPC, SYM_TAB,       
-
-#define _______________SNTH_NAV_R1_________________       KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN, KC_END
-#define _______________SNTH_NAV_R2_________________       KC_EQL,  KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT
-#define _______________SNTH_NAV_R3_________________       KC_MINS, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R
-#define _______________SNTH_NAV_R4_________________       NUM_ENT, OSM_SFT, ALT_TAB 
+#define _______________COLEMAQ_DHM_R1______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q
+#define _______________COLEMAQ_DHM_R2______________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
+#define _______________COLEMAQ_DHM_R3______________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
+#define _______________COLEMAQ_DHM_R4______________       NUM_ENT, OSM_SFT, ALT_TAB 
 
 
-#define _______________SNTH_NUM_L1_________________       KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9
-#define _______________SNTH_NUM_L2_________________       LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,  KC_9
-#define _______________SNTH_NUM_L3_________________       LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V)
-#define _______________SNTH_NUM_L4_________________                         CTL_ENT, NAV_SPC, SYM_TAB,       
+#define ________________SNTH_NAV_L1________________       KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_WH_U
+#define ________________SNTH_NAV_L2________________       ALT_INS, LGUI_TAB,SFT_BSPC,CTL_DEL, KC_WH_D
+#define ________________SNTH_NAV_L3________________       LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V)
+#define ________________SNTH_NAV_L4________________                         CTL_ENT, NAV_SPC, SYM_TAB
 
-#define _______________SNTH_NUM_R1_________________       KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6
-#define _______________SNTH_NUM_R2_________________       KC_8,   RCTL_0,   RSFT_2,  RGUI_4,  RALT_6
-#define _______________SNTH_NUM_R3_________________       KC_MINS,KC_PLUS,  _______, _______, _______
-#define _______________SNTH_NUM_R4_________________       NUM_ENT, OSM_SFT, ALT_TAB 
-
-
-#define _______________SNTH_SYM_L1_________________       KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_F11
-#define _______________SNTH_SYM_L2_________________       KC_LABK, KC_RABK, KC_LPRN, KC_RPRN, KC_QUOT
-#define _______________SNTH_SYM_L3_________________       LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V)
-#define _______________SNTH_SYM_L4_________________                         _______, S_UTIL,  _______
-
-#define _______________SNTH_SYM_R1_________________       KC_ASTR, KC_GRV,  KC_AT,   KC_DLR,  KC_CIRC
-#define _______________SNTH_SYM_R2_________________       KC_EQL,  KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR
-#define _______________SNTH_SYM_R3_________________       KC_MINS, KC_PLUS, _______, _______, _______
-#define _______________SNTH_SYM_R4_________________       NUM2_ENT,SFT_SPC, _______ 
+#define ________________SNTH_NAV_R1________________       KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN, KC_END
+#define ________________SNTH_NAV_R2________________       KC_EQL,  KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT
+#define ________________SNTH_NAV_R3________________       KC_MINS, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R
+#define ________________SNTH_NAV_R4________________       NUM_ENT, OSM_SFT, ALT_TAB 
 
 
-#define _______________SNTH_PAD_L1_________________       KC_QUOT, KC_PIPE, KC_LCBR, KC_RCBR, KC_HASH
-#define _______________SNTH_PAD_L2_________________       KC_LT,   KC_GT,   KC_LPRN, KC_RPRN, KC_EXLM
-#define _______________SNTH_PAD_L3_________________       KC_PERC, KC_COMM, KC_LBRC, KC_RBRC, KC_CIRC
-#define _______________SNTH_PAD_L4_________________                         _______, _______, _______
+#define ________________SNTH_NUM_L1________________       KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9
+#define ________________SNTH_NUM_L2________________       LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,  KC_9
+#define ________________SNTH_NUM_L3________________       LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V)
+#define ________________SNTH_NUM_L4________________                         CTL_ENT, NAV_SPC, SYM_TAB
 
-#define _______________SNTH_PAD_R1_________________       KC_GRV,  KC_7,    KC_8,    KC_9,    KC_PLUS
-#define _______________SNTH_PAD_R2_________________       KC_BSLS, RGUI_4,  RCTL_5,  RSFT_6,  RALT_DOT
-#define _______________SNTH_PAD_R3_________________       KC_DLR,  KC_1,    KC_2,    KC_3,    KC_SLSH
-#define _______________SNTH_PAD_R4_________________       CTL_ENT, LSFT_0,  T_SYM
+#define ________________SNTH_NUM_R1________________       KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6
+#define ________________SNTH_NUM_R2________________       KC_8,   RCTL_0,   RSFT_2,  RGUI_4,  RALT_6
+#define ________________SNTH_NUM_R3________________       KC_MINS,KC_PLUS,  _______, _______, _______
+#define ________________SNTH_NUM_R4________________       NUM_ENT, OSM_SFT, ALT_TAB 
 
 
-#define _______________SNTH_UTL_L1_________________       RESET,   KC_MSTP, KC_VOLU, KC_MPLY, KC_CAPS
-#define _______________SNTH_UTL_L2_________________       XXXXXXX, KC_MPRV, KC_VOLD, KC_MNXT, XXXXXXX,                      
-#define _______________SNTH_UTL_L3_________________       KC_SLEP, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX,                      
-#define _______________SNTH_UTL_L4_________________                         _______, _______, _______,    
+#define ________________SNTH_SYM_L1________________       KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_F11
+#define ________________SNTH_SYM_L2________________       KC_LABK, KC_RABK, KC_LPRN, KC_RPRN, KC_QUOT
+#define ________________SNTH_SYM_L3________________       LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V)
+#define ________________SNTH_SYM_L4________________                         _______, S_UTIL,  _______
 
-#define _______________SNTH_UTL_R1_________________       COLEMAK, RGB_TOG, XXXXXXX, RESET, EEP_RST,\
-#define _______________SNTH_UTL_R2_________________       RGB_MOD, RGB_SPI, RGB_HUI, RGB_SAI, RGB_VAI,\
-#define _______________SNTH_UTL_R3_________________       RGB_RMOD,RGB_SPD, RGB_HUD, RGB_SAD, RGB_VAD,\
-#define _______________SNTH_UTL_R4_________________       _______, _______, _______ \
+#define ________________SNTH_SYM_R1________________       KC_ASTR, KC_GRV,  KC_AT,   KC_DLR,  KC_CIRC
+#define ________________SNTH_SYM_R2________________       KC_EQL,  KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR
+#define ________________SNTH_SYM_R3________________       KC_MINS, KC_PLUS, _______, _______, _______
+#define ________________SNTH_SYM_R4________________       NUM2_ENT,SFT_SPC, _______ 
+
+
+#define ________________SNTH_PAD_L1________________       KC_QUOT, KC_PIPE, KC_LCBR, KC_RCBR, KC_HASH
+#define ________________SNTH_PAD_L2________________       KC_LT,   KC_GT,   KC_LPRN, KC_RPRN, KC_EXLM
+#define ________________SNTH_PAD_L3________________       KC_PERC, KC_COMM, KC_LBRC, KC_RBRC, KC_CIRC
+#define ________________SNTH_PAD_L4________________                         _______, _______, _______
+
+#define ________________SNTH_PAD_R1________________       KC_GRV,  KC_7,    KC_8,    KC_9,    KC_PLUS
+#define ________________SNTH_PAD_R2________________       KC_BSLS, RGUI_4,  RCTL_5,  RSFT_6,  RALT_DOT
+#define ________________SNTH_PAD_R3________________       KC_DLR,  KC_1,    KC_2,    KC_3,    KC_SLSH
+#define ________________SNTH_PAD_R4________________       CTL_ENT, LSFT_0,  T_SYM
+
+
+#define ________________SNTH_UTL_L1________________       RESET,   KC_MSTP, KC_VOLU, KC_MPLY, KC_CAPS
+#define ________________SNTH_UTL_L2________________       XXXXXXX, KC_MPRV, KC_VOLD, KC_MNXT, XXXXXXX
+#define ________________SNTH_UTL_L3________________       KC_SLEP, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX
+#define ________________SNTH_UTL_L4________________                         _______, _______, _______
+
+#define ________________SNTH_UTL_R1________________       COLEMAK, RGB_TOG, XXXXXXX, RESET,   EEP_RST
+#define ________________SNTH_UTL_R2________________       RGB_MOD, RGB_SPI, RGB_HUI, RGB_SAI, RGB_VAI
+#define ________________SNTH_UTL_R3________________       RGB_RMOD,RGB_SPD, RGB_HUD, RGB_SAD, RGB_VAD
+#define ________________SNTH_UTL_R4________________       _______, _______, _______
 
 
 #define _________________QWERTY_L1_________________        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
