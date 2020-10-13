@@ -139,6 +139,7 @@ enum custom_keycodes {
 #define CTL_SCLN RCTL_T(KC_SCLN)
 #define CTL_COLN RCTL_T(CK_COLN)	// doesn't work
 #define CTL_QUOT RCTL_T(KC_QUOT)
+#define CTL_MINS RCTL_T(KC_MINS)
 
 #define SFT_TAB RSFT_T(KC_TAB)
 #define SFT_ENT RSFT_T(KC_ENTER)
@@ -187,8 +188,8 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 // clang-format off
 #define KEYMAP_wrapper(...)                  LAYOUT(__VA_ARGS__)
 #define LAYOUT_wrapper(...)                  LAYOUT(__VA_ARGS__)
-#define LAYOUT_gergo_wrapper(...)            LAYOUT_gergo(__VA_ARGS__)
 #define LAYOUT_crkbd_wrapper(...)            LAYOUT_crkbd(__VA_ARGS__)
+#define LAYOUT_gergo_wrapper(...)            LAYOUT_gergo(__VA_ARGS__)
 
 /*
 Blocks for each of the four major keyboard layouts
@@ -204,7 +205,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _______________COLEMAQ_DHM_L1______________       KC_QUOT, KC_W,    KC_F,    KC_P,    KC_B
 #define _______________COLEMAQ_DHM_L2______________       KC_A,    KC_R,    KC_S,    KC_T,    KC_G
 #define _______________COLEMAQ_DHM_L3______________       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
-#define _______________COLEMAQ_DHM_L4______________                         CTL_ENT, NAV_SPC, SYM_TAB
+#define _______________COLEMAQ_DHM_L4______________                         ALT_ENT, NAV_SPC, SYM_TAB
 
 #define _______________COLEMAQ_DHM_R1______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q
 #define _______________COLEMAQ_DHM_R2______________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
@@ -215,23 +216,23 @@ NOTE: These are all the same length.  If you do a search/replace
 #define ________________SNTH_NAV_L1________________       KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_WH_U
 #define ________________SNTH_NAV_L2________________       ALT_INS, LGUI_TAB,SFT_BSPC,CTL_DEL, KC_WH_D
 #define ________________SNTH_NAV_L3________________       LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V)
-#define ________________SNTH_NAV_L4________________                         CTL_ENT, NAV_SPC, SYM_TAB
+#define ________________SNTH_NAV_L4________________                         _______, _______, _______
 
 #define ________________SNTH_NAV_R1________________       KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN, KC_END
 #define ________________SNTH_NAV_R2________________       KC_EQL,  KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT
 #define ________________SNTH_NAV_R3________________       KC_MINS, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R
-#define ________________SNTH_NAV_R4________________       NUM_ENT, OSM_SFT, ALT_TAB 
+#define ________________SNTH_NAV_R4________________       _______, SFT_SPC, _______ 
 
 
 #define ________________SNTH_NUM_L1________________       KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_F9
 #define ________________SNTH_NUM_L2________________       LALT_7,  LGUI_5,  LSFT_3,  LCTL_1,  KC_9
 #define ________________SNTH_NUM_L3________________       LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V)
-#define ________________SNTH_NUM_L4________________                         CTL_ENT, NAV_SPC, SYM_TAB
+#define ________________SNTH_NUM_L4________________                         _______, _______, _______
 
 #define ________________SNTH_NUM_R1________________       KC_F8,  KC_F10,   KC_F2,   KC_F4,   KC_F6
 #define ________________SNTH_NUM_R2________________       KC_8,   RCTL_0,   RSFT_2,  RGUI_4,  RALT_6
 #define ________________SNTH_NUM_R3________________       KC_MINS,KC_PLUS,  _______, _______, _______
-#define ________________SNTH_NUM_R4________________       NUM_ENT, OSM_SFT, ALT_TAB 
+#define ________________SNTH_NUM_R4________________       _______, _______, _______ 
 
 
 #define ________________SNTH_SYM_L1________________       KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_F11
