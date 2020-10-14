@@ -16,8 +16,8 @@
   ) \
   LAYOUT_gergo_wrapper( \
    KC_MINS,   K01,  K02,  K03,  K04,  K05,                                                   K06,  K07,  K08,  K09,  K0A,   KC_BSPC,   \
-   CTL_ESC,   K11,  K12,  K13,  K14,  K15,   KC_DLR,                              KC_CIRC,   K16,  K17,  K18,  K19,  K1A,   CTL_ENT,   \
-   CK_COLN,   K21,  K22,  K23,  K24,  K25,  KC_PERC,    KC_DEL,        KC_BSPC,   KC_AMPR,   K26,  K27,  K28,  K29,  K2A,   KC_BSLS,   \
+   CTL_ESC,   K11,  K12,  K13,  K14,  K15,   KC_DLR,                              KC_CIRC,   K16,  K17,  K18,  K19,  K1A,  CTL_COLN,   \
+   SFT_EQL,   K21,  K22,  K23,  K24,  K25,  KC_PERC,    KC_DEL,        CK_COLN,   KC_AMPR,   K26,  K27,  K28,  K29,  K2A,  SFT_BSLS,   \
                                 K34,  K35,      K36,   NUM_ENT,        SYM_TAB,       K37,   K38,  K39 			               \
     )
 #define LAYOUT_gergo_base_wrapper(...)       LAYOUT_gergo_base(__VA_ARGS__)
@@ -28,10 +28,10 @@ extern uint8_t is_master;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_COLEMAKDHM] = LAYOUT_gergo_base_wrapper(
-        _______________COLEMAQ_DHM_L1______________, _______________COLEMAQ_DHM_R1______________,
-        _______________COLEMAQ_DHM_L2______________, _______________COLEMAQ_DHM_R2______________,
-        _______________COLEMAQ_DHM_L3______________, _______________COLEMAQ_DHM_R3______________,
-        _______________COLEMAQ_DHM_L4______________, _______________COLEMAQ_DHM_R4______________
+        _______________COLEMAK_DHM_L1______________, _______________COLEMAK_DHM_R1______________,
+        _______________COLEMAK_DHM_L2______________, _______________COLEMAK_DHM_R2______________,
+        _______________COLEMAK_DHM_L3______________, _______________COLEMAK_DHM_R3______________,
+        _______________COLEMAK_DHM_L4______________, _______________COLEMAK_DHM_R4______________
   ),
   [_NAV] = LAYOUT_gergo_base_wrapper(
         ________________SNTH_NAV_L1________________, ________________SNTH_NAV_R1________________,
@@ -92,6 +92,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             add_mods(real_mods & shift_mods);
             return false; //we handled this keypress
+            break;
+        case CTL_COLN:
+            if (record->tap.count > 0) {
+                if (real_mods & shift_mods) { // act as a semi-colon when shift is pressed
+                    keycode_to_register = KC_SCLN;
+                } else {
+                    keycode_to_register = KC_COLN;
+                }
+                del_mods(real_mods & shift_mods);
+                if (record->event.pressed) {
+                    register_code16(keycode_to_register);
+                } else {
+                    unregister_code16(keycode_to_register);
+                }
+                add_mods(real_mods & shift_mods);
+            return false; //we handled this keypress
+            }
             break;
         case CK_UNDS:
             if (real_mods & shift_mods) { // act as a minus when shift is pressed

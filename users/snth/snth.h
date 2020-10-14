@@ -32,9 +32,9 @@ enum layer_names {
 
 /* Define keycodes */
 enum custom_keycodes {
-    CK_AMPR = KC_F21,
-    CK_COLN = SAFE_RANGE,
-    CK_UNDS,
+    CK_COLN = KC_F21,
+    CK_AMPR = KC_F22,
+    CK_UNDS = SAFE_RANGE,
 };
 
 // Base layers
@@ -94,16 +94,17 @@ enum custom_keycodes {
 #define RCTL_0 RCTL_T(KC_0)
 
 // SYM layer Home row tap and modifier combos
-// #define LALT_LT LALT_T(KC_LT)
-// #define LSFT_GT LSFT_T(KC_GT)
-// #define LCTL_LPRN LCTL_T(KC_LPRN)
-// #define LGUI_RPRN LGUI_T(KC_RPRN)
-// 
-// #define RALT_LCBR RALT_T(MT_LCBR)
-// #define RSFT_RCBR RSFT_T(MT_RCBR)
-// #define RCTL_LBRC RCTL_T(KC_LBRC)
-// #define RGUI_RBRC RGUI_T(KC_RBRC)
-// 
+
+#define LALT_LABK LALT_T(KC_LABK)
+#define LGUI_RABK LGUI_T(KC_RABK)
+#define LSFT_LPRN LSFT_T(KC_LPRN)
+#define LCTL_RPRN LCTL_T(KC_RPRN)
+
+#define RALT_LCBR RALT_T(KC_LCBR)
+#define RGUI_RCBR RGUI_T(KC_RCBR)
+#define RSFT_LBRC RSFT_T(KC_LBRC)
+#define RCTL_RBRC RGUI_T(KC_RBRC)
+
 // #define LSFT_0 LSFT_T(KC_0)
 
 // PAD layer Home row tap and modifier combos
@@ -147,7 +148,9 @@ enum custom_keycodes {
 #define SFT_BSPC LSFT_T(KC_BSPC)
 #define SFT_BSLS RSFT_T(KC_BSLS)
 #define SFT_AMPR RSFT_T(KC_AMPR)
-#define SFT_ESC RSFT_T(KC_ESC)
+#define SFT_GRV LSFT_T(KC_GRV)
+#define SFT_ESC LSFT_T(KC_ESC)
+#define SFT_EQL LSFT_T(KC_EQL)
 #define OSM_SFT OSM(MOD_RSFT)
 
 #define ALT_SPC LALT_T(KC_SPACE)
@@ -202,15 +205,15 @@ NOTE: These are all the same length.  If you do a search/replace
   then you need to add/remove underscores to keep the
   lengths consistent.
 */
-#define _______________COLEMAQ_DHM_L1______________       KC_QUOT, KC_W,    KC_F,    KC_P,    KC_B
-#define _______________COLEMAQ_DHM_L2______________       KC_A,    KC_R,    KC_S,    KC_T,    KC_G
-#define _______________COLEMAQ_DHM_L3______________       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
-#define _______________COLEMAQ_DHM_L4______________                         ALT_ENT, NAV_SPC, SYM_TAB
+#define _______________COLEMAK_DHM_L1______________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
+#define _______________COLEMAK_DHM_L2______________       KC_A,    KC_R,    KC_S,    KC_T,    KC_G
+#define _______________COLEMAK_DHM_L3______________       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
+#define _______________COLEMAK_DHM_L4______________                         ALT_ENT, NAV_SPC, SYM_TAB
 
-#define _______________COLEMAQ_DHM_R1______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q
-#define _______________COLEMAQ_DHM_R2______________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
-#define _______________COLEMAQ_DHM_R3______________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
-#define _______________COLEMAQ_DHM_R4______________       NUM_ENT, OSM_SFT, ALT_TAB 
+#define _______________COLEMAK_DHM_R1______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT
+#define _______________COLEMAK_DHM_R2______________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
+#define _______________COLEMAK_DHM_R3______________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
+#define _______________COLEMAK_DHM_R4______________       NUM_ENT, OSM_SFT, ALT_TAB 
 
 
 #define ________________SNTH_NAV_L1________________       KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_WH_U
@@ -219,7 +222,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define ________________SNTH_NAV_L4________________                         _______, _______, _______
 
 #define ________________SNTH_NAV_R1________________       KC_ASTR, KC_HOME, KC_PGUP, KC_PGDN, KC_END
-#define ________________SNTH_NAV_R2________________       KC_EQL,  KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT
+#define ________________SNTH_NAV_R2________________       KC_CIRC, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT
 #define ________________SNTH_NAV_R3________________       KC_MINS, KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R
 #define ________________SNTH_NAV_R4________________       _______, SFT_SPC, _______ 
 
@@ -236,12 +239,12 @@ NOTE: These are all the same length.  If you do a search/replace
 
 
 #define ________________SNTH_SYM_L1________________       KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_F11
-#define ________________SNTH_SYM_L2________________       KC_LABK, KC_RABK, KC_LPRN, KC_RPRN, KC_QUOT
+#define ________________SNTH_SYM_L2________________       KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_GRV
 #define ________________SNTH_SYM_L3________________       LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V)
 #define ________________SNTH_SYM_L4________________                         _______, S_UTIL,  _______
 
-#define ________________SNTH_SYM_R1________________       KC_ASTR, KC_GRV,  KC_AT,   KC_DLR,  KC_CIRC
-#define ________________SNTH_SYM_R2________________       KC_EQL,  KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR
+#define ________________SNTH_SYM_R1________________       KC_ASTR, KC_F10,  KC_AT,   KC_DLR,  KC_QUOT
+#define ________________SNTH_SYM_R2________________       KC_CIRC, KC_RBRC, KC_LBRC, KC_RABK, KC_LABK
 #define ________________SNTH_SYM_R3________________       KC_MINS, KC_PLUS, _______, _______, _______
 #define ________________SNTH_SYM_R4________________       NUM2_ENT,SFT_SPC, _______ 
 
