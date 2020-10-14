@@ -33,8 +33,18 @@ enum layer_names {
 /* Define keycodes */
 enum custom_keycodes {
     CK_COLN = KC_F21,
-    CK_AMPR = KC_F22,
+
     CK_UNDS = SAFE_RANGE,
+
+    CK_LCBR,
+    CK_RCBR,
+    CK_LPRN,
+    CK_RPRN,
+    CK_LABK,
+    CK_RABK,
+    CK_LBRC,
+    CK_RBRC,
+
 };
 
 // Base layers
@@ -95,15 +105,15 @@ enum custom_keycodes {
 
 // SYM layer Home row tap and modifier combos
 
-#define LALT_LABK LALT_T(KC_LABK)
-#define LGUI_RABK LGUI_T(KC_RABK)
-#define LSFT_LPRN LSFT_T(KC_LPRN)
-#define LCTL_RPRN LCTL_T(KC_RPRN)
+#define LALT_LCBR LALT_T(CK_LCBR)
+#define LGUI_RCBR LGUI_T(CK_RCBR)
+#define LSFT_LPRN LSFT_T(CK_LPRN)
+#define LCTL_RPRN LCTL_T(CK_RPRN)
 
-#define RALT_LCBR RALT_T(KC_LCBR)
-#define RGUI_RCBR RGUI_T(KC_RCBR)
-#define RSFT_LBRC RSFT_T(KC_LBRC)
-#define RCTL_RBRC RGUI_T(KC_RBRC)
+#define RALT_LABK RALT_T(CK_LABK)
+#define RGUI_RABK RGUI_T(CK_RABK)
+#define RSFT_LBRC RSFT_T(CK_LBRC)
+#define RCTL_RBRC RGUI_T(CK_RBRC)
 
 // #define LSFT_0 LSFT_T(KC_0)
 
@@ -239,12 +249,12 @@ NOTE: These are all the same length.  If you do a search/replace
 
 
 #define ________________SNTH_SYM_L1________________       KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_F11
-#define ________________SNTH_SYM_L2________________       KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_GRV
+#define ________________SNTH_SYM_L2________________       LALT_LCBR, LGUI_RCBR, LSFT_LPRN, LCTL_RPRN, KC_GRV
 #define ________________SNTH_SYM_L3________________       LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_D),LCTL(KC_V)
 #define ________________SNTH_SYM_L4________________                         _______, S_UTIL,  _______
 
 #define ________________SNTH_SYM_R1________________       KC_ASTR, KC_F10,  KC_AT,   KC_DLR,  KC_QUOT
-#define ________________SNTH_SYM_R2________________       KC_CIRC, KC_RBRC, KC_LBRC, KC_RABK, KC_LABK
+#define ________________SNTH_SYM_R2________________       KC_CIRC, RCTL_RBRC, RSFT_LBRC, RGUI_RABK, RALT_LABK
 #define ________________SNTH_SYM_R3________________       KC_MINS, KC_PLUS, _______, _______, _______
 #define ________________SNTH_SYM_R4________________       NUM2_ENT,SFT_SPC, _______ 
 

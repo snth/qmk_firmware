@@ -125,12 +125,82 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             add_mods(real_mods & shift_mods);
             return false; //we handled this keypress
             break;
-        case CTL_AMPR:
+        case LALT_LCBR:
             if (record->tap.count > 0) {
                 if (record->event.pressed) {
-                    register_code16(KC_AMPR);
+                    register_code16(KC_LCBR);
                 } else {
-                    unregister_code16(KC_AMPR);
+                    unregister_code16(KC_LCBR);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case LGUI_RCBR:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_RCBR);
+                } else {
+                    unregister_code16(KC_RCBR);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case LSFT_LPRN:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_LPRN);
+                } else {
+                    unregister_code16(KC_LPRN);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case LCTL_RPRN:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_RPRN);
+                } else {
+                    unregister_code16(KC_RPRN);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case RALT_LABK:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_LABK);
+                } else {
+                    unregister_code16(KC_LABK);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case RGUI_RABK:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_RABK);
+                } else {
+                    unregister_code16(KC_RABK);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case RSFT_LBRC:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_LBRC);
+                } else {
+                    unregister_code16(KC_LBRC);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case RCTL_RBRC:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_RBRC);
+                } else {
+                    unregister_code16(KC_RBRC);
                 }
                 return false; //we handled this keypress
             }
