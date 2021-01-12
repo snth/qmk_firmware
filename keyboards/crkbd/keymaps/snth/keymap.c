@@ -14,10 +14,10 @@
     K21, K22, K23, K24, K25,           K26, K27, K28, K29, K2A, \
                    K34, K35, K36, K37, K38, K39       \
   ) \
-  LAYOUT_wrapper( \
-    KC_TAB,   K01,  K02,  K03,  K04,  K05,                       K06,  K07,  K08,  K09,  K0A,    KC_BSPC,   \
-   CK_COLN,   K11,  K12,  K13,  K14,  K15,                       K16,  K17,  K18,  K19,  K1A,    KC_MINS,   \
-   CTL_ESC,   K21,  K22,  K23,  K24,  K25,                       K26,  K27,  K28,  K29,  K2A,    CTL_BSLS,  \
+  LAYOUT_crkbd_wrapper( \
+  LGUI_ESC,   K01,  K02,  K03,  K04,  K05,                       K06,  K07,  K08,  K09,  K0A,    KC_BSPC,   \
+ LCTL_COLN,   K11,  K12,  K13,  K14,  K15,                       K16,  K17,  K18,  K19,  K1A,  RCTL_MINS,   \
+ LSFT_BSLS,   K21,  K22,  K23,  K24,  K25,                       K26,  K27,  K28,  K29,  K2A,   RSFT_EQL,  \
                                 K34,  K35,  K36,           K37,  K38,  K39 					     \
     )
 #define LAYOUT_crkbd_base_wrapper(...)       LAYOUT_crkbd_base(__VA_ARGS__)
@@ -28,10 +28,10 @@ extern uint8_t is_master;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_COLEMAKDHM] = LAYOUT_crkbd_base_wrapper(
-        _______________COLEMAQ_DHM_L1______________, _______________COLEMAQ_DHM_R1______________,
-        _______________COLEMAQ_DHM_L2______________, _______________COLEMAQ_DHM_R2______________,
-        _______________COLEMAQ_DHM_L3______________, _______________COLEMAQ_DHM_R3______________,
-        _______________COLEMAQ_DHM_L4______________, _______________COLEMAQ_DHM_R4______________
+        _______________COLEMAK_DHM_L1______________, _______________COLEMAK_DHM_R1______________,
+        _______________COLEMAK_DHM_L2______________, _______________COLEMAK_DHM_R2______________,
+        _______________COLEMAK_DHM_L3______________, _______________COLEMAK_DHM_R3______________,
+        _______________COLEMAK_DHM_L4______________, _______________COLEMAK_DHM_R4______________
   ),
   [_NAV] = LAYOUT_crkbd_base_wrapper(
         ________________SNTH_NAV_L1________________, ________________SNTH_NAV_R1________________,
@@ -93,6 +93,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             add_mods(real_mods & shift_mods);
             return false; //we handled this keypress
             break;
+        case LCTL_COLN:
+            if (record->tap.count > 0) {
+                if (real_mods & shift_mods) { // act as a semi-colon when shift is pressed
+                    keycode_to_register = KC_SCLN;
+                } else {
+                    keycode_to_register = KC_COLN;
+                }
+                del_mods(real_mods & shift_mods);
+                if (record->event.pressed) {
+                    register_code16(keycode_to_register);
+                } else {
+                    unregister_code16(keycode_to_register);
+                }
+                add_mods(real_mods & shift_mods);
+            return false; //we handled this keypress
+            }
+            break;
         case CK_UNDS:
             if (real_mods & shift_mods) { // act as a minus when shift is pressed
                 keycode_to_register = KC_MINS;
@@ -108,12 +125,82 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             add_mods(real_mods & shift_mods);
             return false; //we handled this keypress
             break;
-        case CTL_AMPR:
+        case LALT_LCBR:
             if (record->tap.count > 0) {
                 if (record->event.pressed) {
-                    register_code16(KC_AMPR);
+                    register_code16(KC_LCBR);
                 } else {
-                    unregister_code16(KC_AMPR);
+                    unregister_code16(KC_LCBR);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case LGUI_RCBR:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_RCBR);
+                } else {
+                    unregister_code16(KC_RCBR);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case LSFT_LPRN:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_LPRN);
+                } else {
+                    unregister_code16(KC_LPRN);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case LCTL_RPRN:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_RPRN);
+                } else {
+                    unregister_code16(KC_RPRN);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case RALT_LABK:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_LABK);
+                } else {
+                    unregister_code16(KC_LABK);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case RGUI_RABK:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_RABK);
+                } else {
+                    unregister_code16(KC_RABK);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case RSFT_LBRC:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_LBRC);
+                } else {
+                    unregister_code16(KC_LBRC);
+                }
+                return false; //we handled this keypress
+            }
+            break;
+        case RCTL_RBRC:
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    register_code16(KC_RBRC);
+                } else {
+                    unregister_code16(KC_RBRC);
                 }
                 return false; //we handled this keypress
             }
