@@ -139,7 +139,7 @@ enum custom_keycodes {
 #define CTL_AT  LCTL_T(S(KC_AT))
 #define CTL_EQL RCTL_T(KC_EQL)
 #define CTL_GRV RCTL_T(KC_GRV)
-#define CTL_ESC RCTL_T(KC_ESC)
+#define LCTL_ESC LCTL_T(KC_ESC)
 #define CTL_ENT RCTL_T(KC_ENTER)
 #define CTL_TAB RCTL_T(KC_TAB)
 #define CTL_DEL RCTL_T(KC_DEL)
@@ -148,34 +148,35 @@ enum custom_keycodes {
 #define CTL_SLSH RCTL_T(KC_SLSH)
 #define CTL_BSLS RCTL_T(KC_BSLS)
 #define CTL_SCLN RCTL_T(KC_SCLN)
-#define CTL_COLN RCTL_T(CK_COLN)	// doesn't work
+#define LCTL_COLN LCTL_T(CK_COLN)	// doesn't work
 #define CTL_QUOT RCTL_T(KC_QUOT)
-#define CTL_MINS RCTL_T(KC_MINS)
+#define RCTL_MINS RCTL_T(KC_MINS)
 
 #define SFT_TAB RSFT_T(KC_TAB)
 #define SFT_ENT RSFT_T(KC_ENTER)
 #define SFT_SPC RSFT_T(KC_SPACE)
 #define SFT_BSPC LSFT_T(KC_BSPC)
-#define SFT_BSLS RSFT_T(KC_BSLS)
+#define LSFT_BSLS LSFT_T(KC_BSLS)
 #define SFT_AMPR RSFT_T(KC_AMPR)
 #define SFT_GRV LSFT_T(KC_GRV)
 #define SFT_ESC LSFT_T(KC_ESC)
-#define SFT_EQL LSFT_T(KC_EQL)
+#define RSFT_EQL RSFT_T(KC_EQL)
 #define OSM_SFT OSM(MOD_RSFT)
 
 #define ALT_SPC LALT_T(KC_SPACE)
-#define ALT_ENT LALT_T(KC_ENTER)
+#define LALT_ENT LALT_T(KC_ENTER)
 #define ALT_TAB LALT_T(KC_TAB)
-#define ALT_ESC LALT_T(KC_ESC)
+#define RALT_ESC RALT_T(KC_ESC)
 #define ALT_INS LALT_T(KC_INS)
 #define ALT_DEL LALT_T(KC_DEL)
 #define ALT_BSPC LALT_T(KC_BSPC)
 
-#define LGUI_BSPC LGUI_T(KC_BSPC)
 #define LGUI_ESC LGUI_T(KC_ESC)
 #define LGUI_TAB LGUI_T(KC_TAB)
+#define LGUI_COLN LGUI_T(CK_COLN)
 #define RGUI_MINS RGUI_T(KC_MINS)
 #define RGUI_TAB RGUI_T(KC_TAB)
+#define RGUI_BSPC RGUI_T(KC_BSPC)
 
 // Global tab forward and backward
 #define TBFWD LCTL(KC_TAB)
@@ -218,12 +219,12 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _______________COLEMAK_DHM_L1______________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
 #define _______________COLEMAK_DHM_L2______________       KC_A,    KC_R,    KC_S,    KC_T,    KC_G
 #define _______________COLEMAK_DHM_L3______________       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
-#define _______________COLEMAK_DHM_L4______________                         ALT_ENT, NAV_SPC, SYM_TAB
+#define _______________COLEMAK_DHM_L4______________                        LALT_ENT, NAV_SPC, SYM_TAB
 
 #define _______________COLEMAK_DHM_R1______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT
 #define _______________COLEMAK_DHM_R2______________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
 #define _______________COLEMAK_DHM_R3______________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
-#define _______________COLEMAK_DHM_R4______________       NUM_ENT, OSM_SFT, ALT_TAB 
+#define _______________COLEMAK_DHM_R4______________       NUM_ENT, OSM_SFT, RALT_ESC 
 
 
 #define ________________SNTH_NAV_L1________________       KC_AMPR, KC_PERC, KC_HASH, KC_EXLM, KC_WH_U

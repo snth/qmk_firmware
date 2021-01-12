@@ -15,9 +15,9 @@
                    K34, K35, K36, K37, K38, K39       \
   ) \
   LAYOUT_gergo_wrapper( \
-   KC_MINS,   K01,  K02,  K03,  K04,  K05,                                                   K06,  K07,  K08,  K09,  K0A,   KC_BSPC,   \
-   CTL_ESC,   K11,  K12,  K13,  K14,  K15,   KC_DLR,                              KC_CIRC,   K16,  K17,  K18,  K19,  K1A,  CTL_COLN,   \
-   SFT_EQL,   K21,  K22,  K23,  K24,  K25,  KC_PERC,    KC_DEL,        CK_COLN,   KC_AMPR,   K26,  K27,  K28,  K29,  K2A,  SFT_BSLS,   \
+  LGUI_ESC,   K01,  K02,  K03,  K04,  K05,                                                   K06,  K07,  K08,  K09,  K0A,   KC_BSPC,   \
+ LCTL_COLN,   K11,  K12,  K13,  K14,  K15,   KC_DLR,                              KC_CIRC,   K16,  K17,  K18,  K19,  K1A, RCTL_MINS,   \
+ LSFT_BSLS,   K21,  K22,  K23,  K24,  K25,  KC_PERC,    KC_DEL,        CK_COLN,   KC_AMPR,   K26,  K27,  K28,  K29,  K2A,  RSFT_EQL,   \
                                 K34,  K35,      K36,   NUM_ENT,        SYM_TAB,       K37,   K38,  K39 			               \
     )
 #define LAYOUT_gergo_base_wrapper(...)       LAYOUT_gergo_base(__VA_ARGS__)
@@ -93,7 +93,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             add_mods(real_mods & shift_mods);
             return false; //we handled this keypress
             break;
-        case CTL_COLN:
+        case LCTL_COLN:
             if (record->tap.count > 0) {
                 if (real_mods & shift_mods) { // act as a semi-colon when shift is pressed
                     keycode_to_register = KC_SCLN;
